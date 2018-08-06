@@ -28,8 +28,10 @@
 
     Segment.prototype = {
         reset: function(){
-            this.length = this.path.getTotalLength();
-            this.path.style.strokeDashoffset = this.length * 2;
+            if(this.path.getTotalLength){
+                this.length = this.path.getTotalLength();
+                this.path.style.strokeDashoffset = this.length * 2;
+            }
         },
 
         draw: function(begin, end, duration, options){
